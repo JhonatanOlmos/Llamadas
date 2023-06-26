@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <link rel="stylesheet" href="style/main.css" />
+
+    <script src="https://kit.fontawesome.com/d18aa05b2e.js" crossorigin="anonymous"></script>
+    <title>JavaScript CRUD</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    JavaScript CRUD
+                </a>
+
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="crud-container">
+            <div class="crud-header">
+                <h1>Llamadas Registradas</h1>
+                <button class="button is-success" id="openRegisterModal">
+                    <i class="fas fa-plus"></i>
+                    <span>Nueva Llamada</span>
+                </button>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>*</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Telofono</th>
+                        <th>Telefono al que llamo</th>
+                        <th>Email</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+
+                <tbody id="studentsTable">
+                    <tr>
+                        <th>1</th>
+                        <td>Jhonatan</td>
+                        <td>Olmos</td>
+                        <td>Cometa</td>
+                        <td>3153363656</td>
+                        <td>ejemplo@gmail.com</td>
+                        <td>
+                            <button class="button is-warning">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                            <button class="button is-danger">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <div class="modal" id="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <div class="modal-card-head">
+                <p class="modal-card-title">Registrar Llamada</p>
+                <button class="delete" aria-label="close" id="closeRegisterModal"></button>
+            </div>
+            <section class="modal-card-body">
+                <form id="register-form">
+                    <div class="field">
+                        <label class="label">Nombre :</label>
+                        <div class="control">
+                            <input class="input" type="text" name="nombre" placeholder="Ingresa tu nombre" />
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Apellido :</label>
+                        <div class="control">
+                            <input class="input" type="text" name="apePat" placeholder="Ingresa tu Apellido Paterno" />
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Telefono :</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="Tel" name="apeMat" placeholder="+57 3163363656" />
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-phone"></i>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Telefono al que va a llamar :</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="Tel" name="cel" placeholder="+57 3163363656" />
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="field">
+                            <label class="label">Correo Electronico :</label>
+                            <div class="control has-icons-left">
+                                <input class="input" type="Email" name="email" placeholder="someone@somemail.com" />
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="field">
+                                <label class="label">Descripción :</label>
+                                <div class="control">
+                                    <textarea class="textarea" name="desc" placeholder="Textarea"></textarea>
+                                </div>
+                            </div>
+
+            </section>
+            <div class="modal-card-foot">
+                <button type="submit " class="button is-success">
+                    <i class="fas fa-save"></i>
+                    <span>Registrar</span>
+                </button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-update">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <div class="modal-card-head">
+                <p class="modal-card-title">Registrar Estudiante</p>
+                <button class="delete" aria-label="close" id="closeUpdateModal"></button>
+            </div>
+            <section class="modal-card-body">
+                <form id="Update-form">
+                    <div class="field">
+                        <label class="label">Nombre :</label>
+                        <div class="control">
+                            <input class="input" type="text" name="nombre" placeholder="Ingresa tu nombre" />
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Apellido :</label>
+                        <div class="control">
+                            <input class="input" type="text" name="apePat" placeholder="Ingresa tu Apellido Paterno" />
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Telefono :</label>
+                        <div class="control">
+                            <input class="input" type="text" name="apeMat" placeholder="Ingresa tu Apellido Materno" />
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Teléfono al que va a llamar :</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="Tel" name="cel" placeholder="+57 3163363656" />
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="field">
+                            <label class="label">Correo Electronico :</label>
+                            <div class="control has-icons-left">
+                                <input class="input" type="Email" name="email" placeholder="someone@somemail.com" />
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="field">
+                                <label class="label">Descripción :</label>
+                                <div class="control">
+                                    <textarea class="textarea" name="desc" placeholder="Textarea"></textarea>
+                                </div>
+                            </div>
+
+            </section>
+            <div class="modal-card-foot">
+                <button type="submit " class="button is-success">
+                    <i class="fas fa-save"></i>
+                    <span>Actualizar</span>
+                </button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script>
+
+    <script src="js/app.js"></script>
+
+
+
+
+
+
+</body>
+
+
+</html>
